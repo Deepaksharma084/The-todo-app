@@ -1,3 +1,11 @@
-body,html{
+body,
+html {
     background-color: rgb(203 213 225);
+    height: 100vw;
+    width: 100vw;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
