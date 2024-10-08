@@ -35,6 +35,12 @@ function App() {
     setTodo("")
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSave(); // Trigger save on Enter key press
+    }
+  }
+
   const toggleShowFinished = (e) => {
     setShowFinished(!ShowFinished)
   }
@@ -91,14 +97,14 @@ function App() {
 
 
       <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
-        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 mx-10 text-black font-bold select-none'>Your task manager</h1>
           </div>
 
-          <div className='todo flex items-center justify-center gap-[2vw] h-[5vw] w-[90vw] max-sm:h-[10vw]'>
-            <input type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw] max-sm:ml-1' />
+          <div className='todo max-sm:bg-black flex items-center justify-center gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[86.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
+            <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
             <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
