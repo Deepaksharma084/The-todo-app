@@ -80,18 +80,18 @@ function App() {
   return (
     <>
       <nav className='flex justify-between font-bold text-lg text-white bg-slate-500'>
-        <ul className='flex justify-between gap-4 mx-4 my-4'>
+        <ul className='flex justify-between gap-3 mx-4 my-4'>
           <li>home</li>
           <li>About</li>
         </ul>
-        <ul className='mx-4 my-4'>
+        <ul className='mx-14 my-4'>
           <li>Contact Us</li>
         </ul>
       </nav>
 
 
       <div className='text-white flex justify-center bg-slate-300 min-h-[80vh] '>
-        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] rounded-xl my-4 max-sm:w-[90vw] min-h-[170.9vw] my-6 min-md:bg-red-900'>
+        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 mx-10 text-black font-bold'>Your task manager</h1>
@@ -99,7 +99,7 @@ function App() {
 
           <div className='todo flex items-center justify-center gap-[2vw] h-[5vw] w-[80vw] max-sm:h-[10vw]'>
             <input type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
-            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] w-[20vw]'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
+            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw]'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
           <div className='flex items-center gap-3 w-[80vw]'>
@@ -133,8 +133,8 @@ function App() {
               </div>
 
               <div className='flex h-full gap-4'>
-                <button onClick={() => handleEdit(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[5vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] w-[7vw] rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
-                <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[5vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] w-[7vw] rounded-md text-sm'><i class="ri-delete-bin-6-line"></i></button>
+                <button onClick={() => handleEdit(items.id)} className='text-black flex justify-center items-center h-[1.7vw] max-sm:w-[5vw] bg-[#edffea] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[7vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
+                <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[5vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] max-sm:w-[7vw] max-sm:rounded-md max-sm:text-sm'><i class="ri-delete-bin-6-line"></i></button>
               </div>
 
             </div>
