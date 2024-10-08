@@ -90,32 +90,32 @@ function App() {
       </nav>
 
 
-      <div className='text-white flex justify-center bg-slate-300 min-h-[80vh] '>
+      <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
         <div className='bg-[#85899f] min-h-[70vh] w-[80vw] rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
-            <h1 className='text-xl my-4 mx-10 text-black font-bold'>Your task manager</h1>
+            <h1 className='text-xl my-4 mx-10 text-black font-bold select-none'>Your task manager</h1>
           </div>
 
-          <div className='todo flex items-center justify-center gap-[2vw] h-[5vw] w-[80vw] max-sm:h-[10vw]'>
-            <input type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
-            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw]'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
+          <div className='todo flex items-center justify-center gap-[2vw] h-[5vw] w-[90vw] max-sm:h-[10vw]'>
+            <input type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw] max-sm:ml-1' />
+            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
           <div className='flex items-center gap-3 w-[80vw]'>
             <input onChange={toggleShowFinished} checked={ShowFinished} className='h-[0.9vw] ml-24 max-sm:h-[5vw] max-sm:ml-10' type="checkbox" name="" id="" />
-            <p className="text-[1vw] cursor-pointer text-black max-sm:text-[4vw]">Show finished</p>
+            <p className="text-[1vw] cursor-pointer text-black max-sm:text-[4vw] select-none">Show finished</p>
           </div>
 
           <hr className="h-[0.2vw] bg-gray-400" />
 
-          <h1 className='text-lg mx-10 text-black font-bold'>Your Todos</h1>
+          <h1 className='text-lg mx-10 text-black font-bold select-none'>Your Todos</h1>
 
 
           {todos.length === 0 &&
             <div className='relative flex justify-center mt-10 items-center flex-col mx-24 text-black'>
-              <p className='absolute mt-[-7rem] ml-[-2rem]'>Empty....Zzz</p>
-              <img src={myImage} alt="" />
+              <p className='absolute mt-[-7rem] ml-[-2rem] select-none'>Empty....Zzz</p>
+              <img className='select-none' src={myImage} alt="" />
             </div>}{/*visible only when no todos are there*/}
 
           {todos.map(items => {
