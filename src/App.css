@@ -3,6 +3,7 @@ html {
     background-color: rgb(203 213 225);
     height: 100vw;
     width: 100vw;
+    overflow-x:hidden;
 }
 
 * {
