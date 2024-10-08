@@ -80,11 +80,11 @@ function App() {
   return (
     <>
       <nav className='flex justify-between font-bold text-lg text-white bg-slate-500'>
-        <ul className='flex justify-between gap-3 mx-4 my-4'>
+        <ul className='flex justify-between gap-3 mx-4 my-4 select-none'>
           <li>home</li>
           <li>About</li>
         </ul>
-        <ul className='mx-14 my-4'>
+        <ul className='mx-14 my-4 select-none'>
           <li>Contact Us</li>
         </ul>
       </nav>
