@@ -97,13 +97,13 @@ function App() {
 
 
       <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
-        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+        <div className='bg-[#85899f]  min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-4 max-sm:w-[90vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 mx-10 text-black font-bold select-none'>Your task manager</h1>
           </div>
 
-          <div className='todo max-sm:bg-black flex items-center justify-center gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[86.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
+          <div className='todo max-sm:bg-[#58565b] flex items-center justify-center gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[86.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
             <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
             <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
@@ -139,7 +139,7 @@ function App() {
               </div>
 
               <div className='flex h-full gap-4'>
-                <button onClick={() => handleEdit(items.id)} className='text-black flex justify-center items-center h-[1.7vw] max-sm:w-[5vw] bg-[#edffea] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[7vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
+                <button onClick={() => handleEdit(items.id)} className='ml-4 text-black flex justify-center items-center h-[1.7vw] max-sm:w-[5vw] bg-[#edffea] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[7vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
                 <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[5vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] max-sm:w-[7vw] max-sm:rounded-md max-sm:text-sm'><i class="ri-delete-bin-6-line"></i></button>
               </div>
 
