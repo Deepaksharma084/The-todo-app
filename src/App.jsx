@@ -103,8 +103,8 @@ function App() {
             <h1 className='text-xl my-4 mx-10 text-black font-bold select-none'>Your task manager</h1>
           </div>
 
-          <div className='todo max-sm:bg-[#58565b] flex items-center justify-center gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
-            <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
+          <div className='todo max-sm:bg-[#58565b] flex items-center justify-center max-sm:gap-[4vw] gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
+            <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] max-sm:w-[66vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
             <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
