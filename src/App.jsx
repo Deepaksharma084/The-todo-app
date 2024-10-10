@@ -45,7 +45,7 @@ function App() {
       setTodo(""); // Clear input after saving
     }
   }
-  
+
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -93,6 +93,7 @@ function App() {
       localStorage.removeItem("todos");
     }
   }
+  //explaination:-Using onClick={() => handleDelete(items.id)} is the correct and intended way to ensure the function executes only when the button is clicked and Think of onClick={handleDelete(items.id)} as saying, "As soon as I see this button, go ahead and delete the item!" — this happens immediately, without waiting for any user action.
 
 
   //GSAP
@@ -173,7 +174,7 @@ function App() {
     }
   }, []);
 
-  //explaination:-Using onClick={() => handleDelete(items.id)} is the correct and intended way to ensure the function executes only when the button is clicked andThink of onClick={handleDelete(items.id)} as saying, "As soon as I see this button, go ahead and delete the item!" — this happens immediately, without waiting for any user action.
+
 
   return (
     <>
