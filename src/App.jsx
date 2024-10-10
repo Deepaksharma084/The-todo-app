@@ -2,6 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
 import myImage from './cat.webp';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faPen, faPenRuler } from '@fortawesome/free-solid-svg-icons';
+import gsap from 'gsap';
+
 
 function App() {
   //states
@@ -81,29 +85,112 @@ function App() {
       localStorage.removeItem("todos");
     }
   }
+
+
+  //GSAP
+  const icon1 = useRef(null);
+  const icon2 = useRef(null);
+  const icon3 = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 }); // repeat: -1 makes the animation infinite
+
+    // Animate icons one by one with staggered timings
+    tl.to(icon1.current, {
+      opacity: 1,
+      y: -20,
+      ease: "bounce.out",
+      duration: 0.5,
+      // delay:0.5
+    }) // Fade in icon1
+      .to(icon1.current, {
+        opacity: 0,
+        duration: 0.2,
+        // delay:1
+      }) // Fade out icon1
+      .to(icon2.current, {
+        opacity: 1,
+        duration: 0.5,
+        // delay:1
+      }) // Fade in icon2
+      .to(icon2.current, {
+        opacity: 0,
+        duration: 0.2,
+        // delay:1
+      }) // Fade out icon2
+      .to(icon3.current, {
+        opacity: 1,
+        duration: 0.5,
+        // delay:1
+      }) // Fade in icon3
+      .to(icon3.current, {
+        opacity: 0,
+        duration: 0.5,
+        x: 10,
+        y: -20,
+        // delay:1
+      }); // Fade out icon3
+  }, []);
+
+  const contact = useRef(null);
+
+  useEffect(() => {
+    if (contact.current) { // Check if the ref is assigned
+      const contactInnerText = contact.current.innerText; // Get the innerText
+      const splittedContactInnerText = contactInnerText.split(""); // Correct the typo: "splict" to "split"
+      console.log(splittedContactInnerText); // Just for debugging
+
+      let KhaliDabba = "<a href='https://www.linkedin.com/in/deepak-sharma-d440/' target='_blank' rel='noopener noreferrer'>"; // Start anchor tag
+      //is equal to kuch nahi
+      splittedContactInnerText.forEach(function (char) {
+        KhaliDabba = KhaliDabba + `<span>${char}</span>`
+      })
+      contact.current.innerHTML = KhaliDabba
+      const tl = gsap.timeline({ repeat: -1 })
+      tl.from(contact.current.querySelectorAll('span'), {
+        opacity: 0,
+        delay: 1.6,
+        y: 20,
+        duration: 1,
+        stagger: 0.09,
+      })
+      tl.from(contact.current.querySelectorAll('span'), {
+        opacity: 0,
+        delay: 1.6,
+        y: 20,
+        duration: 1,
+        stagger: -0.09,
+      })
+
+    }
+  }, []);
+
   //explaination:-Using onClick={() => handleDelete(items.id)} is the correct and intended way to ensure the function executes only when the button is clicked andThink of onClick={handleDelete(items.id)} as saying, "As soon as I see this button, go ahead and delete the item!" — this happens immediately, without waiting for any user action.
 
   return (
     <>
-      <nav className='flex justify-between font-bold text-lg text-white bg-slate-500'>
-        <ul className='flex justify-between gap-3 mx-4 my-4 select-none'>
-          <li>Home</li>
-          <li>About</li>
-        </ul>
-        <ul className='mx-14 my-4 select-none'>
-          <li>Contact</li>
+      <nav className='flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-slate-500'>
+        <div className=" max-sm:ml-14 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
+          <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} />
+          <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} />
+          <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} />
+        </div>
+
+
+        <ul className='max-sm:mr-14 mr-[12vw] my-4'>
+          <li ref={contact}>Contact</li>
         </ul>
       </nav>
 
 
       <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
-        <div className='bg-[#85899f]  min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-4 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
-            <h1 className='text-xl my-4 mx-10 text-black font-bold select-none'>Your task manager</h1>
+            <h1 className='text-xl my-4 max-sm:mx-5 mx-10 text-black font-bold select-none'>Your task manager</h1>
           </div>
 
-          <div className='todo max-sm:bg-[#58565b] flex items-center justify-center max-sm:gap-[4vw] gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
+          <div className='todo bg-[#58565b] flex items-center justify-center max-sm:gap-[4vw] gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
             <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] max-sm:w-[66vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
             <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
@@ -115,7 +202,7 @@ function App() {
 
           <hr className="h-[0.2vw] bg-gray-400" />
 
-          <h1 className='text-lg mx-10 max-sm:my-5 text-black font-bold select-none'>Your Todos</h1>
+          <h1 className='text-lg max-sm:mx-5 mx-10 max-sm:my-5 text-black font-bold select-none'>Your Todos</h1>
 
 
           {todos.length === 0 &&
@@ -141,9 +228,9 @@ function App() {
               </div>
 
               <div className='flex h-full gap-3'>
-                
+
                 <button onClick={() => handleEdit(items.id)} className='ml-1 text-black flex justify-center items-center h-[1.7vw] max-sm:w-[7vw] bg-[#edffea] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[3vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
-               
+
                 <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[3vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] max-sm:w-[7vw] max-sm:rounded-md max-sm:text-sm'><i class="ri-delete-bin-6-line"></i></button>
 
               </div>
