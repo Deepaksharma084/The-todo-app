@@ -170,14 +170,14 @@ function App() {
   return (
     <>
       <nav className='flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-slate-500'>
-        <div className=" max-sm:ml-14 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
+        <div className=" max-sm:ml-11 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
           <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} />
           <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} />
           <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} />
         </div>
 
 
-        <ul className='max-sm:mr-14 mr-[12vw] my-4'>
+        <ul className='max-sm:mr-10 mr-[12vw] my-4'>
           <li ref={contact}>Contact</li>
         </ul>
       </nav>
