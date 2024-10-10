@@ -34,10 +34,18 @@ function App() {
     setTodo(e.target.value)//when we hit save button then setTodo is set to nothing and that gets displayed in input so we are connecting this function with input ,so that input gets updated automatically
   }
 
+  // const handleSave = () => {
+  //   setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }])//this syntax updates the list of tasks with the new task at the end while keeping all the previous tasks in the list. [...todos] means keep this as it is and add todo and isCompleted to todos at the end
+  //   setTodo("")
+  // }
+
   const handleSave = () => {
-    setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }])//this syntax updates the list of tasks with the new task at the end while keeping all the previous tasks in the list. [...todos] means keep this as it is and add todo and isCompleted to todos at the end
-    setTodo("")
+    if (todo.trim().length > 0) { // Ensure that the todo isn't empty or just spaces
+      setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }]);
+      setTodo(""); // Clear input after saving
+    }
   }
+  
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
