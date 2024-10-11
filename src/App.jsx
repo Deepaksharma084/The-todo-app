@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
 import myImage from './cat.webp';
+import myImage2 from './peach-cat.gif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faPen, faPenRuler } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
@@ -150,7 +151,7 @@ function App() {
       console.log(splittedContactInnerText); // Just for debugging
 
       let KhaliDabba = "<a href='https://www.linkedin.com/in/deepak-sharma-d440/' target='_blank' rel='noopener noreferrer'>"; // Start anchor tag
-      //is equal to kuch nahi
+
       splittedContactInnerText.forEach(function (char) {
         KhaliDabba = KhaliDabba + `<span>${char}</span>`
       })
@@ -158,14 +159,47 @@ function App() {
       const tl = gsap.timeline({ repeat: -1 })
       tl.from(contact.current.querySelectorAll('span'), {
         opacity: 0,
-        delay: 1.6,
         y: 20,
+        delay: 1.6,
         duration: 1,
         stagger: 0.09,
       })
       tl.from(contact.current.querySelectorAll('span'), {
         opacity: 0,
+        y: 20,
         delay: 1.6,
+        duration: 1,
+        stagger: -0.09,
+      })
+
+    }
+  }, []);
+  
+  const Zzz = useRef(null);
+
+  useEffect(() => {
+    if (Zzz.current) { // Check if the ref is assigned
+      const ZzzInnerText = Zzz.current.innerText; // Get the innerText
+      const splittedZzzInnerText = ZzzInnerText.split(""); // Correct the typo: "splict" to "split"
+      console.log(splittedZzzInnerText); // Just for debugging
+
+      let KhaliDabba = "<a href='https://www.linkedin.com/in/deepak-sharma-d440/' target='_blank' rel='noopener noreferrer'>"; // Start anchor tag
+
+      splittedZzzInnerText.forEach(function (char) {
+        KhaliDabba = KhaliDabba + `<span>${char}</span>`
+      })
+      Zzz.current.innerHTML = KhaliDabba
+      const tl = gsap.timeline({ repeat: -1 })
+      tl.from(Zzz.current.querySelectorAll('span'), {
+        opacity: 0,
+        delay: 0.6,
+        y: 20,
+        duration: 1,
+        stagger: 0.09,
+      })
+      tl.from(Zzz.current.querySelectorAll('span'), {
+        opacity: 0,
+        delay: 0.6,
         y: 20,
         duration: 1,
         stagger: -0.09,
@@ -193,7 +227,11 @@ function App() {
 
 
       <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
-        <div className='bg-[#85899f] min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+        {todos.length > 0 &&
+          <div className='absolute max-sm:top-[40.5vw] top-[9.5vw] max-sm:right-[-22vw] right-[-5vw]  flex justify-center mt-10 items-center flex-col mx-24 text-black'>
+            <img className='select-none z-40 max-sm:h-[30vw] h-[9vw]' src={myImage2} alt="" />
+          </div>}{/*visible only when no todos are there*/}
+        <div className='bg-[#85899f] relative min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 max-sm:mx-5 mx-10 text-black font-bold select-none'>Your task manager</h1>
@@ -216,9 +254,17 @@ function App() {
 
           {todos.length === 0 &&
             <div className='relative flex justify-center mt-10 items-center flex-col mx-24 text-black'>
-              <p className='absolute mt-[-7rem] ml-[-2rem] select-none'>Empty....Zzz</p>
-              <img className='select-none' src={myImage} alt="" />
+              <div className='flex justify-center items-center'>
+                <span className='select-none'>No todos yet</span>
+              </div>
+
+              <div className='relative'>
+                <span ref={Zzz} className='inline absolute right-0 top-5'>Zzz</span>
+                <img className='select-none max-sm:h-[36vw] h-[12vw]' src={myImage} alt="" />
+              </div>
             </div>}{/*visible only when no todos are there*/}
+
+
 
           {todos.map(items => {
             return (ShowFinished || !items.isCompleted) && <div key={items.id} className='flex w-full my-4'>
