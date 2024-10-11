@@ -111,34 +111,34 @@ function App() {
       y: -20,
       ease: "bounce.out",
       duration: 0.5,
-      // delay:0.5
+      delay:4
     }) // Fade in icon1
       .to(icon1.current, {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.8,
         // delay:1
       }) // Fade out icon1
       .to(icon2.current, {
         opacity: 1,
-        duration: 0.5,
+        duration: 0.8,
         // delay:1
       }) // Fade in icon2
       .to(icon2.current, {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.8,
         // delay:1
       }) // Fade out icon2
       .to(icon3.current, {
         opacity: 1,
-        duration: 0.5,
+        duration: 0.8,
         // delay:1
       }) // Fade in icon3
       .to(icon3.current, {
         opacity: 0,
         duration: 0.5,
         x: 10,
-        y: -20,
-        // delay:1
+        y: -15,
+        delay:1
       }); // Fade out icon3
   }, []);
 
@@ -156,25 +156,15 @@ function App() {
         KhaliDabba = KhaliDabba + `<span>${char}</span>`
       })
       contact.current.innerHTML = KhaliDabba
-      const tl = gsap.timeline({ repeat: -1 })
-      tl.from(contact.current.querySelectorAll('span'), {
+      gsap.from(contact.current.querySelectorAll('span'), {
         opacity: 0,
-        y: 20,
-        delay: 1.6,
-        duration: 1,
+        delay: 0.2,
+        duration: 3,
         stagger: 0.09,
       })
-      tl.from(contact.current.querySelectorAll('span'), {
-        opacity: 0,
-        y: 20,
-        delay: 1.6,
-        duration: 1,
-        stagger: -0.09,
-      })
-
     }
   }, []);
-  
+
   const Zzz = useRef(null);
 
   useEffect(() => {
@@ -212,7 +202,7 @@ function App() {
 
   return (
     <>
-      <nav className='flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-slate-500'>
+      <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#434145]'>
         <div className=" max-sm:ml-11 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
           <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} />
           <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} />
@@ -226,12 +216,14 @@ function App() {
       </nav>
 
 
-      <div className='text-white flex justify-center bg-slate-300 min-h-[70vh] '>
+      <div className='text-white flex justify-center min-h-[70vh] '>
+
         {todos.length > 0 &&
           <div className='absolute max-sm:top-[40.5vw] top-[9.5vw] max-sm:right-[-22vw] right-[-5vw]  flex justify-center mt-10 items-center flex-col mx-24 text-black'>
             <img className='select-none z-40 max-sm:h-[30vw] h-[9vw]' src={myImage2} alt="" />
           </div>}{/*visible only when no todos are there*/}
-        <div className='bg-[#85899f] relative min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+
+        <div className='bg-[#ffffff] drop-shadow-xl relative min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 max-sm:mx-5 mx-10 text-black font-bold select-none'>Your task manager</h1>
