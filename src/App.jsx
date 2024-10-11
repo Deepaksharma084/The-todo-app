@@ -235,7 +235,7 @@ function App() {
               </div>
 
               <div className='relative'>
-                <span ref={Zzz} className='inline absolute right-0 top-5'>Zzz..</span>
+                <span ref={Zzz} className='inline absolute right-0 top-5'>Zzz...</span>
                 <img className='select-none max-sm:h-[36vw] h-[12vw]' src={myImage} alt="" />
               </div>
             </div>}{/*visible only when no todos are there*/}
