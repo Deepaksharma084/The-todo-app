@@ -171,7 +171,7 @@ function App() {
 
   return (
     <>
-      <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#434145]'>
+      <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#38373a]'>
         <div className=" max-sm:ml-5 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
           {/* <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} /> */}
           <div className='bg-white rounded-full max-sm:p-1 p-2'>
