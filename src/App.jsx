@@ -99,16 +99,28 @@ function App() {
 
 
   //GSAP
-  const icon2 = useRef(null);
+  const navBarImg = useRef(null);
 
   useEffect(() => {
-    gsap.to(icon2.current, {
+    gsap.to(navBarImg.current, {
       opacity: 1,
       // y: -20,
       // ease: "bounce.out",
       duration: 1,
-      delay:0.2
-  })
+      delay: 0
+    })
+  }, []);
+
+  const navBarLogoName = useRef(null);
+
+  useEffect(() => {
+    gsap.to(navBarLogoName.current, {
+      opacity: 1,
+      // y: -20,
+      // ease: "bounce.out",
+      duration: 1,
+      delay: 0.2
+    })
   }, []);
 
   const contact = useRef(null);
@@ -127,7 +139,7 @@ function App() {
       contact.current.innerHTML = KhaliDabba
       gsap.from(contact.current.querySelectorAll('span'), {
         opacity: 0,
-        delay: 0.2,
+        delay: 0.4,
         duration: 3,
         stagger: 0.09,
       })
@@ -173,14 +185,12 @@ function App() {
     <>
       <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#38373a]'>
         <div className=" max-sm:ml-5 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
-          {/* <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} /> */}
-          <div className='bg-white rounded-full max-sm:p-1 p-2'>
 
-          <img className='max-sm:h-[8vw] h-[2vw]' src={NavLogo} alt="" />
+          <div className='bg-white rounded-full max-sm:p-1 p-2'>
+            <img className='max-sm:h-[8vw] h-[2vw]' style={{opacity:0}} ref={navBarImg} src={NavLogo} alt="" />
           </div>
-          <p className='ml-3'>Todo</p>
-          {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} /> */}
-          {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} /> */}
+
+          <p ref={navBarLogoName} style={{opacity:0}} className='ml-3'>Todo</p>
         </div>
 
 
