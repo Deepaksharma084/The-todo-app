@@ -178,6 +178,7 @@ function App() {
 
           <img className='max-sm:h-[8vw] h-[2vw]' src={NavLogo} alt="" />
           </div>
+          <p className='ml-3'>Todo</p>
           {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} /> */}
           {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} /> */}
         </div>
@@ -224,7 +225,7 @@ function App() {
               </div>
 
               <div className='relative'>
-                <span ref={Zzz} className='inline absolute right-0 top-5'>Zzz</span>
+                <span ref={Zzz} className='inline absolute right-0 top-5'>Zzz..</span>
                 <img className='select-none max-sm:h-[36vw] h-[12vw]' src={myImage} alt="" />
               </div>
             </div>}{/*visible only when no todos are there*/}
