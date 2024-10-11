@@ -6,6 +6,7 @@ import myImage2 from './peach-cat.gif';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faPen, faPenRuler } from '@fortawesome/free-solid-svg-icons';
 import gsap from 'gsap';
+import NavLogo from './tasks.png';
 
 
 function App() {
@@ -98,48 +99,16 @@ function App() {
 
 
   //GSAP
-  const icon1 = useRef(null);
   const icon2 = useRef(null);
-  const icon3 = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 }); // repeat: -1 makes the animation infinite
-
-    // Animate icons one by one with staggered timings
-    tl.to(icon1.current, {
+    gsap.to(icon2.current, {
       opacity: 1,
-      y: -20,
-      ease: "bounce.out",
-      duration: 0.5,
-      delay:4
-    }) // Fade in icon1
-      .to(icon1.current, {
-        opacity: 0,
-        duration: 0.8,
-        // delay:1
-      }) // Fade out icon1
-      .to(icon2.current, {
-        opacity: 1,
-        duration: 0.8,
-        // delay:1
-      }) // Fade in icon2
-      .to(icon2.current, {
-        opacity: 0,
-        duration: 0.8,
-        // delay:1
-      }) // Fade out icon2
-      .to(icon3.current, {
-        opacity: 1,
-        duration: 0.8,
-        // delay:1
-      }) // Fade in icon3
-      .to(icon3.current, {
-        opacity: 0,
-        duration: 0.5,
-        x: 10,
-        y: -15,
-        delay:1
-      }); // Fade out icon3
+      // y: -20,
+      // ease: "bounce.out",
+      duration: 1,
+      delay:0.2
+  })
   }, []);
 
   const contact = useRef(null);
@@ -203,14 +172,18 @@ function App() {
   return (
     <>
       <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#434145]'>
-        <div className=" max-sm:ml-11 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
-          <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} />
-          <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} />
-          <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} />
+        <div className=" max-sm:ml-5 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
+          {/* <FontAwesomeIcon className='text-2xl absolute bottom-0' ref={icon1} icon={faPen} style={{ opacity: 0 }} /> */}
+          <div className='bg-white rounded-full max-sm:p-1 p-2'>
+
+          <img className='max-sm:h-[8vw] h-[2vw]' src={NavLogo} alt="" />
+          </div>
+          {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon2} icon={faPenToSquare} style={{ opacity: 0 }} /> */}
+          {/* <FontAwesomeIcon className='text-2xl absolute' ref={icon3} icon={faPenRuler} style={{ opacity: 0 }} /> */}
         </div>
 
 
-        <ul className='max-sm:mr-10 mr-[12vw] my-4'>
+        <ul className='max-sm:mr-[4vw] mr-[11vw] my-4'>
           <li ref={contact}>Contact</li>
         </ul>
       </nav>
@@ -223,7 +196,7 @@ function App() {
             <img className='select-none z-40 max-sm:h-[30vw] h-[9vw]' src={myImage2} alt="" />
           </div>}{/*visible only when no todos are there*/}
 
-        <div className='bg-[#ffffff] drop-shadow-xl relative min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
+        <div className='bg-[#f0ebd7] drop-shadow-xl relative min-h-[70vh] w-[80vw] overflow-hidden rounded-xl my-24 max-sm:w-[95vw] max-sm:min-h-[170.9vw] max-sm:my-6 min-md:bg-red-900'>
 
           <div>
             <h1 className='text-xl my-4 max-sm:mx-5 mx-10 text-black font-bold select-none'>Your task manager</h1>
@@ -276,9 +249,9 @@ function App() {
 
               <div className='flex h-full gap-3'>
 
-                <button onClick={() => handleEdit(items.id)} className='ml-1 text-black flex justify-center items-center h-[1.7vw] max-sm:w-[7vw] bg-[#edffea] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[3vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
+                <button onClick={() => handleEdit(items.id)} className='ml-1 text-black flex justify-center items-center h-[1.7vw] max-sm:w-[7vw] bg-[#A0E3F9] rounded-xl font-medium max-sm:text-lg max-sm:h-[6vw] w-[3vw] max-sm:rounded-md text-sm'><i class="ri-quill-pen-line"></i></button>
 
-                <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[3vw] bg-[#edffea] rounded-xl font-medium text-lg max-sm:h-[6vw] max-sm:w-[7vw] max-sm:rounded-md max-sm:text-sm'><i class="ri-delete-bin-6-line"></i></button>
+                <button onClick={() => handleDelete(items.id)} className='text-black flex justify-center items-center h-[1.7vw] w-[3vw] bg-[#A0E3F9] rounded-xl font-medium text-lg max-sm:h-[6vw] max-sm:w-[7vw] max-sm:rounded-md max-sm:text-sm'><i class="ri-delete-bin-6-line"></i></button>
 
               </div>
 
