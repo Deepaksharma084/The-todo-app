@@ -1,6 +1,6 @@
 body,
 html {
-    background-color: rgb(203, 213, 225);
+    background-color: rgb(136, 142, 149);
     height: 100vh; /* Use vh for full viewport height */
     width: 100vw;
     overflow-x: hidden; /* Prevents horizontal scroll */

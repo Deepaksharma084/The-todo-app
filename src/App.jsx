@@ -204,7 +204,7 @@ function App() {
 
           <div className='todo bg-[#58565b] flex items-center justify-center max-sm:gap-[4vw] gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
             <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] max-sm:w-[66vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
-            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#29ff77] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
+            <button onClick={handleSave} disabled={todo.length < 1} className='text-black flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#A0E3FB] rounded-xl font-medium text-lg  max-sm:h-[8vw] max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
           <div className='flex items-center gap-3 w-[80vw]'>
@@ -235,11 +235,11 @@ function App() {
             return (ShowFinished || !items.isCompleted) && <div key={items.id} className='flex w-full my-4'>
 
               <div className='mr-3 mt-1'>
-                <input name={items.id} onChange={toggleIsCompleted} checked={items.isCompleted} className='ml-24 max-sm:ml-5' type="checkbox" id="toggle" />
+                <input name={items.id} onChange={toggleIsCompleted} checked={items.isCompleted} className='ml-24 max-sm:ml-5 ' type="checkbox" id="toggle" />
               </div>
 
               <div className='flex gap-4 w-[60vw] break-words'>
-                <div className={items.isCompleted ? "line-through decoration-[#000]" : ""}>
+                <div className={items.isCompleted ? "line-through decoration-[#f00]" : ""}>
                   <div className='text-black break-words w-[40vw] h-auto'>
                     {items.todo}
                   </div>
