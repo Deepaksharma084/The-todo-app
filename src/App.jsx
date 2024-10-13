@@ -18,10 +18,8 @@ function App() {
   //gets data from localstorage when page is refreshed or loaded
   useEffect(() => {
     const todosString = localStorage.getItem("todos");
-    if (todosString) {//true hongey toh hi parse hongey varna error ayega is if ke bina
-      const storedTodos = JSON.parse(todosString);
-      setTodos(storedTodos);
-    }
+    if (todosString)
+      setTodos(JSON.parse(todosString));
   }, []);
 
   // Save todos to localStorage whenever they change
@@ -40,11 +38,12 @@ function App() {
   //   setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }])//this syntax updates the list of tasks with the new task at the end while keeping all the previous tasks in the list. [...todos] means keep this as it is and add todo and isCompleted to todos at the end
   //   setTodo("")
   // }
-
+  const inputRef = useRef(null);
   const handleSave = () => {
     if (todo.trim().length > 0) { // Ensure that the todo isn't empty or just spaces
       setTodos([...todos, { id: uuidv4(), todo, isCompleted: false }]);
       setTodo(""); // Clear input after saving
+      inputRef.current.focus(); // Refocus input
     }
   }
 
@@ -85,9 +84,9 @@ function App() {
 
   const handleDelete = (id) => {
     const newTodos = todos.filter(item => {//.filter() method to create a new array (newTodos) that contains all the todos except the one with the id you want to delete.
-      return item.id !== id
+      return item.id !== id;
     })
-    setTodos(newTodos)
+    setTodos(newTodos);
 
 
     // Clear localStorage if no todos remain
@@ -100,28 +99,16 @@ function App() {
 
   //GSAP
   const navBarImg = useRef(null);
-
-  useEffect(() => {
-    gsap.to(navBarImg.current, {
-      opacity: 1,
-      // y: -20,
-      // ease: "bounce.out",
-      duration: 1,
-      delay: 0
-    })
-  }, []);
-
   const navBarLogoName = useRef(null);
 
   useEffect(() => {
-    gsap.to(navBarLogoName.current, {
+    gsap.to([navBarImg.current, navBarLogoName.current], {
       opacity: 1,
-      // y: -20,
-      // ease: "bounce.out",
       duration: 1,
-      delay: 0.2
-    })
+      stagger: 0.2, // Sequential animation for both
+    });
   }, []);
+
 
   const contact = useRef(null);
 
@@ -183,14 +170,14 @@ function App() {
 
   return (
     <>
-      <nav className='drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#38373a]'>
+      <nav className='select-none drop-shadow-xl flex justify-between items-center font-bold text-lg w-[100vw] max-sm:h-[16vw] h-[4vw] text-white bg-[#38373a]'>
         <div className=" max-sm:ml-5 ml-[12vw] h-[4vw] max-sm:h-[16vw] flex justify-center items-center icon-container relative">
 
           <div className='bg-white rounded-full max-sm:p-1 p-2'>
-            <img className='max-sm:h-[8vw] h-[2vw]' style={{opacity:0}} ref={navBarImg} src={NavLogo} alt="" />
+            <img className='max-sm:h-[8vw] h-[2vw]' style={{ opacity: 0 }} ref={navBarImg} src={NavLogo} alt="" />
           </div>
 
-          <p ref={navBarLogoName} style={{opacity:0}} className='ml-3'>Todo</p>
+          <p ref={navBarLogoName} style={{ opacity: 0 }} className='ml-3'>Todo</p>
         </div>
 
 
@@ -214,7 +201,7 @@ function App() {
           </div>
 
           <div className='todo bg-[#58565b] flex items-center justify-center max-sm:gap-[4vw] gap-[2vw] h-[5vw] w-[78vw] max-sm:h-[14vw] max-sm:w-[89.9vw] mx-auto rounded-xl max-sm:rounded-xl max-sm:mx-auto'>
-            <input onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] max-sm:w-[66vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
+            <input ref={inputRef} onKeyDown={handleKeyDown} type="text" onChange={handlechange} value={todo} className='text-black hover:bg-[#eaebed] h-[2.1vw] max-sm:w-[66vw] w-[60vw]  rounded-xl p-2 max-sm:h-[8vw]' />
             <button onClick={handleSave} disabled={todo.length < 1} className='flex justify-center items-center h-[2.1vw] w-[5vw] bg-[#87dffc] rounded-xl font-medium text-lg  max-sm:h-[8vw] text-white max-sm:w-[15vw] select-none'>Save</button>{/* gets disabled if characters are less than 1 i.e 0*/}
           </div>
 
